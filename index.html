@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        #pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    Hello World
+
+    <div>
+        <iframe id="pdf-viewer" src=""></iframe>
+
+        
+        <script>
+            // Relative path to the PDF you want to display
+            const pdfPath = 'document.pdf';
+
+            // PDF.js viewer URL from CDN
+            const viewerUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html';
+
+            // Get the full URL of the current page
+            const currentPageUrl = window.location.href;
+
+            // Combine the current page URL with the relative PDF path
+            const absolutePdfUrl = new URL(pdfPath, currentPageUrl).href;
+
+            // Combine the URLs
+            const fullUrl = `${viewerUrl}?file=${absolutePdfUrl}`;
+
+            // Set the iframe src
+            document.getElementById('pdf-viewer').src = fullUrl;
+        </script>
+    </div>
+
+</body>
+
+</html>
